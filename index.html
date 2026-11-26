@@ -3,46 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CEMB Z2000 Balancing Machine Manual</title>
+  <meta name="theme-color" content="#071b36">
+  <meta name="description" content="CEMB balancing machine manuals, operating procedures, certificates and maintenance documents.">
+  <title>CEMB Balancing Machine | Document Library</title>
   <style>
+    :root {
+      color-scheme: light;
+      --navy: #071b36;
+      --blue: #1769d2;
+      --ink: #14233b;
+      --muted: #64748b;
+      --line: #e5edf6;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-height: 100%; scroll-behavior: smooth; }
+
     body {
-      margin: 0;
       min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #dce8f5 url("balancing-machine.jpg") center / cover fixed no-repeat;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      background: linear-gradient(120deg, rgba(5, 23, 48, .82), rgba(11, 48, 91, .50) 48%, rgba(5, 19, 38, .72));
+    }
+
+    .page-shell {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: #fff;
+      margin-bottom: 62px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 750; letter-spacing: .02em; }
+    .brand-mark {
       display: grid;
+      width: 42px;
+      height: 42px;
       place-items: center;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
+      border: 1px solid rgba(255,255,255,.32);
+      border-radius: 13px;
+      background: rgba(255,255,255,.14);
+      backdrop-filter: blur(12px);
+      font-size: 15px;
+      letter-spacing: .04em;
     }
-    main {
-      max-width: 700px;
-      padding: 2rem;
-      text-align: center;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+    .topbar-note {
+      padding: 9px 14px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 999px;
+      color: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.1);
+      font-size: .84rem;
+      backdrop-filter: blur(10px);
     }
-    a {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.8rem 1.2rem;
-      color: white;
-      background: #0969da;
-      border-radius: 6px;
+
+    .hero { max-width: 760px; margin: 0 0 30px; color: #fff; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: #d7e9ff;
+      font-size: .75rem;
+      font-weight: 750;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 22px; height: 2px; content: ""; background: #62b5ff; }
+    h1 { margin: 0; font-size: clamp(2.35rem, 6vw, 4.5rem); line-height: 1.02; letter-spacing: -.055em; }
+    .hero p { max-width: 590px; margin: 18px 0 0; color: rgba(255,255,255,.82); font-size: clamp(1rem, 2vw, 1.12rem); line-height: 1.7; }
+
+    .library {
+      padding: clamp(20px, 4vw, 38px);
+      border: 1px solid rgba(255,255,255,.58);
+      border-radius: 24px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 24px 80px rgba(3, 18, 39, .28);
+      backdrop-filter: blur(16px);
+    }
+
+    .library-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .library-heading h2 { margin: 0; font-size: clamp(1.25rem, 3vw, 1.65rem); letter-spacing: -.03em; }
+    .library-heading p { margin: 6px 0 0; color: var(--muted); font-size: .92rem; }
+    .count { flex: 0 0 auto; color: var(--muted); font-size: .82rem; }
+
+    .documents { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .document {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-height: 104px;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: inherit;
       text-decoration: none;
-      font-weight: bold;
+      background: #fff;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
-    a:hover {
-      background: #0550ae;
+    .document:hover, .document:focus-visible {
+      transform: translateY(-3px);
+      border-color: #b7d5fb;
+      box-shadow: 0 12px 28px rgba(27, 86, 156, .11);
+      outline: none;
+    }
+    .pdf-icon {
+      display: grid;
+      flex: 0 0 48px;
+      height: 54px;
+      place-items: center;
+      border-radius: 12px;
+      color: #e54848;
+      background: #fff0ef;
+      font-size: .68rem;
+      font-weight: 850;
+      letter-spacing: .06em;
+    }
+    .document-copy { min-width: 0; flex: 1; }
+    .document-copy strong { display: block; font-size: .96rem; line-height: 1.4; }
+    .document-copy span { display: block; margin-top: 5px; color: var(--muted); font-size: .79rem; }
+    .arrow { flex: 0 0 auto; color: #8292a8; font-size: 1.2rem; transition: transform .18s ease; }
+    .document:hover .arrow { transform: translate(2px, -2px); color: var(--blue); }
+
+    .footer { margin-top: 20px; color: rgba(255,255,255,.75); font-size: .8rem; text-align: center; }
+    .footer a { color: #fff; }
+
+    @media (max-width: 640px) {
+      .page-shell { width: min(100% - 28px, 520px); padding-top: 18px; }
+      .topbar { margin-bottom: 48px; }
+      .topbar-note { font-size: .72rem; }
+      .documents { grid-template-columns: 1fr; }
+      .library-heading { align-items: start; }
+      .count { padding-top: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>CEMB Z2000 Balancing Machine</h1>
-    <p>View or download the machine manual.</p>
-    <a href="CEMB_Z2000%20Balancing%20machine%20Manual.pdf" target="_blank" rel="noopener">
-      View PDF Manual
-    </a>
-  </main>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">C</span><span>CEMB · MACHINE DOCUMENTS</span></div>
+      <span class="topbar-note">Balancing equipment reference library</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="eyebrow">Technical document center</div>
+        <h1 id="page-title">Everything you need to keep in balance.</h1>
+        <p>Access the CEMB balancing machine manual, operating procedures, risk assessment, certificate and maintenance records in one place.</p>
+      </section>
+
+      <section class="library" aria-labelledby="library-title">
+        <div class="library-heading">
+          <div>
+            <h2 id="library-title">Document library</h2>
+            <p>Select a document to open the PDF.</p>
+          </div>
+          <span class="count">6 documents</span>
+        </div>
+
+        <div class="documents">
+          <a class="document" href="Balancing%20machine%20_%20CEMB.pdf" target="_blank" rel="noopener">
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-copy"><strong>Balancing Machine — CEMB</strong><span>Machine overview</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="document" href="CEMB%20-%20Certificate.PDF" target="_blank" rel="noopener">
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-copy"><strong>CEMB Certificate</strong><span>Certification document</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="document" href="CEMB_Z2000%20Balancing%20machine%20Manual.pdf" target="_blank" rel="noopener">
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-copy"><strong>CEMB Z2000 Machine Manual</strong><span>Operation and reference manual</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="document" href="MOP%20for%20Balancing%20Machine%20Operations.pdf" target="_blank" rel="noopener">
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-copy"><strong>Machine Operations MOP</strong><span>Method of procedure</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="document" href="Preventive%20Maintenance%20Inspection%20Report.pdf" target="_blank" rel="noopener">
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-copy"><strong>Preventive Maintenance Report</strong><span>Inspection and maintenance record</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="document" href="RA%20-Balancing%20Work.pdf" target="_blank" rel="noopener">
+            <span class="pdf-icon" aria-hidden="true">PDF</span>
+            <span class="document-copy"><strong>Risk Assessment — Balancing Work</strong><span>Safety and risk assessment</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">CEMB Balancing Machine · Keep this page and its PDF files together in the repository.</footer>
+  </div>
 </body>
 </html>
